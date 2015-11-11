@@ -44,9 +44,6 @@ class Assignment
   end
 
   def get_todolist_byid(id)
-      # accept an id input parameter
-      # use the TodoList Model class to get the TodoList associated with the `id` primary key
-      # return the TodoList instance that matches the provided id
       TodoList.find(id)
   end
 
@@ -54,15 +51,11 @@ class Assignment
   # Update rows in DB
   #
   def update_password(id, password_digest)
-      # accept an id and password_digest input parameters
-      # use the User Model class to update the `password_digest` for the User associated with the id primary key
-      # (no return is required)
+      User.find(id).update(password_digest: password_digest)
   end
 
   def update_listname(id, name)
-      # accept an id and name input parameters
-      # use the TodoList Model class to update the `list_name` for the TodoList associated with id primary key 
-      # (no return is required)
+      TodoList.find(id).update(list_name: name)
   end 
 
   #
@@ -85,10 +78,12 @@ a = Assignment.new
 #h_list = {list_name: "john list", list_due_date: "2015-11-12"}
 #h_list2 = {name: "johnlist2", due_date: "2015-11-13"}
 #a.create_user({username: "jane", password_digest: "qwerty"})
-#a.create_todolist(h_list)
+#a.create_todolist({name: "johnlist2", due_date: "2015-11-13"})
 #a.create_todolist(h_list2)
 #puts a.find_allusers(5,5)
 #puts a.find_alllists(3,2)
 #puts a.find_todolist_byname("johnlist2")
 #puts a.get_user_byid(94)
-puts a.get_todolist_byid(67)
+#puts a.get_todolist_byid(67)
+#a.update_password(99,"p@ssw0rd")
+#a.update_listname(69,"new_name")
